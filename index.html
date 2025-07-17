@@ -98,8 +98,7 @@
         </div>
     </div>
 
-    <script>
-        // Test event functions
+<!--     <script>
         function trackPageView() {
             console.log('Page view tracked');
             alert('Page view event sent!');
@@ -119,6 +118,51 @@
             console.log('Purchase tracked:', productId, productName, price);
             alert(`Purchase event sent for ${productName} - $${price}`);
         }
-    </script>
+    </script> -->
+    <script>
+// Test event functions
+function trackPageView() {
+    freshpaint.track('Page View', {
+        page_title: document.title,
+        page_url: window.location.href
+    });
+    console.log('Page view tracked');
+    alert('Page view event sent!');
+}
+
+function trackSignup() {
+    freshpaint.track('Sign Up', {
+        method: 'email',
+        source: 'test_page'
+    });
+    console.log('Signup tracked');
+    alert('Signup event sent!');
+}
+
+function trackLogin() {
+    freshpaint.track('Login', {
+        method: 'email'
+    });
+    console.log('Login tracked');
+    alert('Login event sent!');
+}
+
+function trackPurchase(productId, productName, price) {
+    freshpaint.track('purchase', {
+        currency: 'USD',
+        value: price,
+        transaction_id: 'T_' + Date.now(),
+        conversion: true,
+        items: [{
+            item_id: productId,
+            item_name: productName,
+            price: price,
+            quantity: 1
+        }]
+    });
+    console.log('Purchase tracked:', productId, productName, price);
+    alert(`Purchase event sent for ${productName} - $${price}`);
+}
+</script>
 </body>
 </html>
