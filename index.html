@@ -164,17 +164,19 @@ function trackPurchase(productId, productName, price) {
     alert(`Purchase event sent for ${productName} - $${price}`);
 }
 
-        freshpaint.track('purchase', {
-    currency: 'USD',
-    value: 10,
-    transaction_id: 'T_MANUAL_TEST',
-    conversion: true,
-    items: [{
-        item_id: 'test-item',
-        item_name: 'Manual Test Item',
-        price: 10,
-        quantity: 1
-    }]
+window.addEventListener('load', function() {
+    freshpaint.track('purchase', {
+        currency: 'USD',
+        value: 10,
+        transaction_id: 'T_MANUAL_TEST',
+        conversion: true,
+        items: [{
+            item_id: 'test-item',
+            item_name: 'Manual Test Item',
+            price: 10,
+            quantity: 1
+        }]
+    });
 });
 </script>
 </body>
